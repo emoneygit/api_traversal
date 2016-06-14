@@ -1,16 +1,16 @@
 
 var button = document.getElementById('output')
   button.addEventListener('click', function() {
-var result = document.getElementById('input')
-
-})
+var result = document.getElementById('input').value;
+console.log(result);
 
 var title = document.getElementById('center_column')
 
 var request = new XMLHttpRequest()
 
-request.open("GET", "http://www.omdbapi.com/?s=minions")
+request.open("GET", "http://www.omdbapi.com/?s=" + result)
 request.send()
+
 request.onreadystatechange = function(){
   if(request.readyState === 4 && request.status < 400){
     var response  = JSON.parse(request.responseText)
@@ -28,3 +28,4 @@ request.onreadystatechange = function(){
       }
     }
   }
+})
